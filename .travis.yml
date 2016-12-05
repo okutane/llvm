@@ -1,6 +1,5 @@
 language: cpp
 
-
 install:
  - pwd
  - LLVM_DIR=`pwd`
@@ -9,3 +8,10 @@ install:
  - cd llvm-build
  - cmake -G "Unix Makefiles" $LLVM_DIR
  - make
+
+addons:
+    apt:
+      packages:
+        - cmake
+      sources:
+        - kalakris-cmake
