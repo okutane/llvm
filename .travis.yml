@@ -1,5 +1,12 @@
 language: cpp
 
+before_install:
+ - if [[ ! -f "cmake-3.4.3-Linux-x86_64/bin/cmake" ]]; then wget --no-check-certificate http://cmake.org/files/v3.4/cmake-3.4.3-Linux-x86_64.tar.gz && tar -xvf cmake-3.4.3-Linux-x86_64.tar.gz; fi
+ - mkdir build && cd build
+ - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ../cmake-3.4.3-Linux-x86_64/bin/cmake .. ;fi
+ - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ../cmake-3.4.3-Linux-x86_64/bin/cmake --build . --config Release ;fi
+ - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ../cmake-3.4.3-Linux-x86_64/bin/cmake --build . --config Debug ;fi
+
 install:
  - pwd
  - LLVM_DIR=`pwd`
@@ -9,9 +16,3 @@ install:
  - cmake -G "Unix Makefiles" $LLVM_DIR
  - make
 
-addons:
-    apt:
-      packages:
-        - cmake
-      sources:
-        - kalakris-cmake
