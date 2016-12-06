@@ -45,7 +45,7 @@ before_install:
 # - ../cmake-3.4.3-Linux-x86_64/bin/cmake --build . --config Debug
 
 install:
- - alias gcc=$COMPILER
+ - export CXX=$COMPILER
  - pwd
  - LLVM_DIR=`pwd`
  - cd ..
