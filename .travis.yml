@@ -2,17 +2,16 @@ language: cpp
 
 before_install:
  - if [[ ! -f "cmake-3.4.3-Linux-x86_64/bin/cmake" ]]; then wget --no-check-certificate http://cmake.org/files/v3.4/cmake-3.4.3-Linux-x86_64.tar.gz && tar -xvf cmake-3.4.3-Linux-x86_64.tar.gz; fi
- - mkdir build && cd build
- - ../cmake-3.4.3-Linux-x86_64/bin/cmake ..
- - ../cmake-3.4.3-Linux-x86_64/bin/cmake --build . --config Release
- - ../cmake-3.4.3-Linux-x86_64/bin/cmake --build . --config Debug
+# - mkdir build && cd build
+# - ../cmake-3.4.3-Linux-x86_64/bin/cmake ..
+# - ../cmake-3.4.3-Linux-x86_64/bin/cmake --build . --config Release
+# - ../cmake-3.4.3-Linux-x86_64/bin/cmake --build . --config Debug
 
 install:
  - pwd
  - LLVM_DIR=`pwd`
  - cd ..
- - mkdir llvm-build
- - cd llvm-build
- - cmake -G "Unix Makefiles" $LLVM_DIR
+ - mkdir llvm-build && cd llvm-build
+ - ../cmake-3.4.3-Linux-x86_64/bin/cmake -G "Unix Makefiles" $LLVM_DIR
  - make
 
