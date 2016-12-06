@@ -12,6 +12,6 @@ install:
  - LLVM_DIR=`pwd`
  - cd ..
  - mkdir llvm-build && cd llvm-build
- - ../cmake-3.4.3-Linux-x86_64/bin/cmake -G "Unix Makefiles" $LLVM_DIR
+ - $LLVM_DIR/cmake-3.4.3-Linux-x86_64/bin/cmake -G "Unix Makefiles" $LLVM_DIR
  - make
 
