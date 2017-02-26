@@ -1,0 +1,4 @@
+language: cpp
+dist: xenial
+
+script: ./build.sh && build/bin/llvm-config --version
