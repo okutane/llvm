@@ -51,5 +51,20 @@ install:
  - cd ..
  - mkdir llvm-build && cd llvm-build
  - $LLVM_DIR/cmake-3.4.3-Linux-x86_64/bin/cmake -G "Unix Makefiles" $LLVM_DIR
- - make -j
+ # subdependencies for my library
+ - make LLVMCore
+ - make LLVMAsmParser
+ - make LLVMBitReader
+ - make LLVMProfileData
+ - make LLVMMC
+ - make LLVMMCParser
+ - make LLVMObject
+ - make LLVMAnalysis
+ # dependencies for my library
+ - make LLVMIRReader
+ - make LLVMTransformUtils
+ # to build my library
+ - make llvm-config
+ # to check strip-debug-info
+ - make llvm-dis
 
