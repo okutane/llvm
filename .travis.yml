@@ -68,3 +68,5 @@ install:
  # to check strip-debug-info
  - make llvm-dis
 
+script:
+ - echo ok
