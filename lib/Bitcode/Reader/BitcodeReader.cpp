@@ -92,6 +92,11 @@ static cl::opt<bool> PrintSummaryGUIDs(
     cl::desc(
         "Print the global id for each value when reading the module summary"));
 
+static cl::opt<bool> ShouldUpgradeDebugInfo(
+	"strip-debug-info", cl::init(true), cl::Hidden,
+	cl::desc(
+		"Strip outdated debug info from module"));
+
 namespace {
 
 enum {
@@ -4772,7 +4777,8 @@ Error BitcodeReader::materializeModule() {
   }
   RemangledIntrinsics.clear();
 
-  UpgradeDebugInfo(*TheModule);
+  if (ShouldUpgradeDebugInfo)
+    UpgradeDebugInfo(*TheModule);
 
   UpgradeModuleFlags(*TheModule);
   return Error::success();
